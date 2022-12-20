@@ -2,6 +2,11 @@ const asyncHandler = require("express-async-handler");
 
 const Category = require("../models/categoryModel");
 
+const getAllCategories = asyncHandler(async (req, res) => {
+  const categories = await Category.find().select("-__v");
+  res.json(categories);
+});
+
 const createCategory = asyncHandler(async (req, res) => {
   const { title } = req.body;
 
@@ -24,4 +29,5 @@ const createCategory = asyncHandler(async (req, res) => {
 
 module.exports = {
   createCategory,
+  getAllCategories,
 };
