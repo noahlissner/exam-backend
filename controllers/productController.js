@@ -9,7 +9,7 @@ const getAllProducts = asyncHandler(async (req, res) => {
 });
 
 const createProduct = asyncHandler(async (req, res) => {
-  const { title, description, category, price, published } = req.body;
+  const { title, img, category, price, published } = req.body.data;
 
   if (
     !title ||
@@ -23,7 +23,7 @@ const createProduct = asyncHandler(async (req, res) => {
 
   const product = await Product.create({
     title,
-    description,
+    img,
     category,
     price,
     published,
@@ -46,8 +46,8 @@ const update = asyncHandler(async (req, res) => {
   //   throw new Error("Something went wrong");
   // }
 
+  console.log(req.body);
   const product = await Product.findByIdAndUpdate({ _id: data._id }, data);
-  console.log(product);
   res.sendStatus(200);
 });
 

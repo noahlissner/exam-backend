@@ -9,9 +9,9 @@ const productModel = mongoose.Schema({
     type: Number,
     required: true,
   },
-  description: {
+  img: {
     type: String,
-    required: false,
+    required: true,
   },
   category: {
     type: mongoose.Schema.Types.ObjectId,
