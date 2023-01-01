@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 
-const Product = require("../models/productModel");
+const Product = require("../../models/productModel");
 
 const getAllProducts = asyncHandler(async (req, res) => {
   const products = await Product.find().populate("category").select("-__v");

@@ -4,7 +4,7 @@ const {
   getAllProducts,
   createProduct,
   update,
-} = require("../controllers/productController");
+} = require("../../controllers/admin/productController");
 
 router.get("/getall", getAllProducts);
 router.post("/create", createProduct);
