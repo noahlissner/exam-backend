@@ -39,14 +39,11 @@ const createProduct = asyncHandler(async (req, res) => {
 
 const update = asyncHandler(async (req, res) => {
   const { data } = req.body;
-  console.log(data._id);
 
   // if (!id || (value !== true && value !== false)) {
   //   res.status(400);
   //   throw new Error("Something went wrong");
   // }
-
-  console.log(req.body);
   const product = await Product.findByIdAndUpdate({ _id: data._id }, data);
   res.sendStatus(200);
 });
