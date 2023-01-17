@@ -23,6 +23,7 @@ app.use("/api/admin/users", require("./routes/admin/userRoutes"));
 app.use("/api/admin/products", require("./routes/admin/productRoutes"));
 app.use("/api/admin/category", require("./routes/admin/categoryRoutes"));
 app.use("/api/admin/customers", require("./routes/admin/customerRoutes"));
+app.use("/api/admin/orders", require("./routes/admin/orderRoutes"));
 app.use("/api", require("./routes/public/checkoutRoutes"));
 
 app.use(errorHandler);

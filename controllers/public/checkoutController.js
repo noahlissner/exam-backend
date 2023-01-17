@@ -4,8 +4,17 @@ const Customer = require("../../models/customerModel");
 const Order = require("../../models/orderModel");
 
 const createOrder = asyncHandler(async (req, res) => {
-  const { name, email, street, zip, city, payment, shipping, products } =
-    req.body;
+  const {
+    name,
+    email,
+    street,
+    zip,
+    city,
+    payment,
+    shipping,
+    products,
+    amount,
+  } = req.body;
 
   const customerExists = await Customer.findOne({ email });
 
@@ -28,6 +37,8 @@ const createOrder = asyncHandler(async (req, res) => {
     products,
     shipping,
     payment,
+    amount,
+    status: "processing",
   });
 
   res.status(200).json(order);
