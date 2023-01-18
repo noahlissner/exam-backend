@@ -40,11 +40,19 @@ const createProduct = asyncHandler(async (req, res) => {
 const update = asyncHandler(async (req, res) => {
   const { data } = req.body;
 
-  // if (!id || (value !== true && value !== false)) {
-  //   res.status(400);
-  //   throw new Error("Something went wrong");
-  // }
   const product = await Product.findByIdAndUpdate({ _id: data._id }, data);
+  res.sendStatus(200);
+});
+
+const remove = asyncHandler(async (req, res) => {
+  const { id } = req.body;
+
+  if (!id) {
+    return res.sendStatus(400);
+  }
+
+  const removed = await Product.findOneAndRemove({ _id: id });
+
   res.sendStatus(200);
 });
 
@@ -52,4 +60,5 @@ module.exports = {
   createProduct,
   getAllProducts,
   update,
+  remove,
 };

@@ -48,8 +48,21 @@ const updateCustomer = asyncHandler(async (req, res) => {
   }
 });
 
+const removeCustomer = asyncHandler(async (req, res) => {
+  const { id } = req.body;
+
+  if (!id) {
+    return res.sendStatus(400);
+  }
+
+  const removed = await Customer.findOneAndRemove({ _id: id });
+
+  res.sendStatus(200);
+});
+
 module.exports = {
   getAllCustomers,
   updateCustomer,
   createCustomer,
+  removeCustomer,
 };

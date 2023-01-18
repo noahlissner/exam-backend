@@ -41,7 +41,12 @@ const createOrder = asyncHandler(async (req, res) => {
     status: "processing",
   });
 
-  res.status(200).json(order);
+  if (order) {
+    res.status(200).json(order._id);
+  } else {
+    res.status(400);
+    throw new Error("Invalid data");
+  }
 });
 
 module.exports = { createOrder };
