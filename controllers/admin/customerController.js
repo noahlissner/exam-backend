@@ -16,7 +16,7 @@ const createCustomer = asyncHandler(async (req, res) => {
     throw new Error("Please provide all required fields");
   }
 
-  const customer = Customer.create({
+  const customer = await Customer.create({
     name,
     email,
     street,
